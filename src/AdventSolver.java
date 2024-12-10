@@ -18,8 +18,8 @@ public class AdventSolver {
             File f = new File(fileName);
             Scanner s = new Scanner(f);
             while (s.hasNextLine()) {
-                String line = (s.next()).substring(0, 1);
-                String line2 = (s.next()).substring(0, 1);
+                String line = (s.next()).substring(0, 5);
+                String line2 = (s.next()).substring(0, 5);
                 if (!line.equals("")) {
                     fileData.add(line);
                     fileData2.add(line2);

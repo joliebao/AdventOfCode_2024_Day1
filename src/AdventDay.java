@@ -8,7 +8,7 @@ public class AdventDay {
     private int min1;
     private int min2;
 
-    public AdventDay(ArrayList<String> list1, ArrayList<String> list2){
+    public AdventDay(ArrayList<String> list1, ArrayList<String> list2) {
         this.list1 = list1;
         this.list2 = list2;
         totalSum = 0;
@@ -16,29 +16,48 @@ public class AdventDay {
         min2 = 100000000;
     }
 
-    public int compareLists(){
+    public int compareLists() {
+        int smallestInd1 = 0;
+        int smallestInd2 = 0;
         int counter = 0;
-        while (counter < list1.size()){
-            for (int i = 0; i < list1.size(); i++){
+        while (counter < list1.size()) {
+            for (int i = 0; i < list1.size(); i++) {
                 if (Integer.parseInt(list1.get(i)) < min1) {
                     min1 = Integer.parseInt(list1.get(i));
-                    list1.add(i, "0000000");
+                    smallestInd1 = i;
                 }
             }
             System.out.println("MIN1: " + min1);
-            for (int i2 = 0; i2 < list2.size(); i2++){
+            for (int i2 = 0; i2 < list2.size(); i2++) {
                 if (Integer.parseInt(list2.get(i2)) < min2) {
                     min2 = Integer.parseInt(list2.get(i2));
+                    smallestInd2 = i2;
                 }
             }
-//            System.out.println("MIN2: " + min2);
             totalSum += (Math.abs(min1 - min2));
-//            System.out.println("TOTAL:" + totalSum);
             counter++;
             min1 = 100000000;
             min2 = 100000000;
+            list1.remove(smallestInd1);
+            list1.add(smallestInd1, "1000000");
+            list2.remove(smallestInd2);
+            list2.add(smallestInd2, "1000000");
         }
 
         return totalSum;
+    }
+
+    public int similarityScore() {
+        int counter = 0;
+        int similar = 0;
+        int score = 0;
+        for (int i = 0; i < list1.size(); i++) {
+            for (int i2 = 0; i2 < list2.size(); i2++) {
+                if (Integer.parseInt(list1.get(i)) == Integer.parseInt(list2.get(i2))) {
+                    similar++;
+                }
+
+            }
+        }
     }
 }
