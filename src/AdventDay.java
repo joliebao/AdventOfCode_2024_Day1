@@ -48,16 +48,18 @@ public class AdventDay {
     }
 
     public int similarityScore() {
-        int counter = 0;
         int similar = 0;
         int score = 0;
         for (int i = 0; i < list1.size(); i++) {
+            int similarNum = Integer.parseInt(list1.get(i));
             for (int i2 = 0; i2 < list2.size(); i2++) {
                 if (Integer.parseInt(list1.get(i)) == Integer.parseInt(list2.get(i2))) {
                     similar++;
                 }
-
             }
+            score += similar * similarNum;
+            similar = 0;
         }
+        return score;
     }
 }

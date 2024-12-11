@@ -25,10 +25,9 @@ public class AdventSolver {
                     fileData2.add(line2);
                 }
             }
-            System.out.println("LINE1:" + fileData);
-            System.out.println("LINE2:" + fileData2);
             AdventDay p = new AdventDay(fileData, fileData2);
             System.out.println(p.compareLists());
+            System.out.println(p.similarityScore());
             return fileData;
         }
         catch (FileNotFoundException e) {
